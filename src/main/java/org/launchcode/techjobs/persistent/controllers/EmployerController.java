@@ -41,12 +41,12 @@ public class EmployerController {
     @PostMapping("add")
     public String processAddEmployerForm(@ModelAttribute @Valid Employer newEmployer,
                                     Errors errors, Model model) {
-        employerRepository.save(newEmployer);
-        model.addAttribute("employer", newEmployer);
 
         if (errors.hasErrors()) {
             return "employers/add";
         }
+        employerRepository.save(newEmployer);
+        model.addAttribute("employer", newEmployer);
 
         return "redirect:";
     }
