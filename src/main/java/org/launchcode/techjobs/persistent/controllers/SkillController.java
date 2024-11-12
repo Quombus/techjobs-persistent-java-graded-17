@@ -19,7 +19,7 @@ public class SkillController {
     @Autowired
     private SkillRepository skillRepository;
 
-    @GetMapping("index")
+    @GetMapping("/")
     public String index(Model model) {
         Iterable<Skill> skills = skillRepository.findAll();
         model.addAttribute("skills", skills);

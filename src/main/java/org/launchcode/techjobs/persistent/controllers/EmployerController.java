@@ -23,7 +23,7 @@ public class EmployerController {
     @Autowired
     private EmployerRepository employerRepository;
 
-    @GetMapping("index")
+    @GetMapping("/")
     public String index(Model model) {
  Iterable<Employer> employers = employerRepository.findAll();
         model.addAttribute("employers", employers);
