@@ -48,12 +48,18 @@ public class HomeController {
     @PostMapping("add")
     public String processAddJobForm(@ModelAttribute @Valid Job newJob,
                                        Errors errors, Model model, @RequestParam int employerId) {
-    jobRepository.save(newJob);
 
         if (errors.hasErrors()) {
 	    model.addAttribute("title", "Add Job");
             return "add";
         }
+        Optional <Employer> optEmployer = employerRepository.findById(employerId);
+        if (optEmployer.isPresent()) {
+            Employer employer = optEmployer.get();
+            newJob.setEmployer(employer);
+            jobRepository.save(newJob);
+        }
+
         return "redirect:";
     }
 
