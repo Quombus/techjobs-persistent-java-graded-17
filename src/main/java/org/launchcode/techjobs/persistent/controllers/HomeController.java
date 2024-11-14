@@ -41,6 +41,7 @@ public class HomeController {
     @GetMapping("add")
     public String displayAddJobForm(Model model) {
     model.addAttribute("employers", employerRepository.findAll());
+
     model.addAttribute("skills", skillRepository.findAll());
         model.addAttribute(new Job());
         return "add";
